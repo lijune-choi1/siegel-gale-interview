@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>June Choi | Siegel+Gale Interview</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="landing-state">
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <div class="author-info">
+                    JUNE CHOI<br>
+                    SIEGEL + GALE INTERVIEW
+                </div>
+                <div>
+                    <a href="https://lijune.cargo.site/" id="open-new-tab" class="open-tab-btn">Open Portfolio</a>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="symbol-container">
+                <!-- Mathematical Symbol -->
+                <div class="symbol-wrapper">
+                    <div class="symbol-plus">
+                        <div class="vertical-bar"></div>
+                        <div class="horizontal-bar"></div>
+                        <div class="second-bar"></div>
+                        <div class="equals-bar"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-container">
+                <!-- Landing Page (former welcome modal) -->
+                <div class="landing-page active" id="landing-page">
+                    <h1 class="landing-title">Welcome to My Siegel+Gale Interview</h1>
+                    <div class="landing-text">
+                        <p>This interactive presentation explores my design philosophy through the lens of mathematical symbols—addition, multiplication, and equals—which mirror Siegel+Gale's commitment to simplification.</p>
+                        <p>Each section represents a key stage in the design process, from gathering complexity to achieving clarity, highlighting my approach to creating meaningful, user-centered experiences that align with Siegel+Gale's core values.</p>
+                        <p><strong>Navigation:</strong> Use mouse scroll, keyboard arrows, or the progress dots at the bottom to move between sections. Click "View Gallery" to see examples of my work.</p>
+                        <p>Be sure to navigate to the end for an interactive game experience!</p>
+                    </div>
+                    <button class="landing-btn" id="start-exploring">Start Exploring</button>
+                </div>
+                
+                <!-- Content for Plus/Addition -->
+                <div class="content-item" id="content-plus">
+                    <h1>+ (Addition)</h1>
+                    <h2>Designing for Humans, Not Just Clients </h2>
+                    <div class="text-content">
+                        <p>Design begins with empathy. 
+                            My background in HCI and user research informs every decision—placing people before pixels, users before aesthetics. 
+                            I craft experiences that feel intuitive, effortless, and true to their needs.
+                        </p>
+                        <div class="work-example">
+                            <p>Example: EasyWith's Momentium Museum (User-Centered UX Work)</p>
+                            <button class="gallery-btn" data-gallery="gallery-plus">View Gallery</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content for Times/Multiplication -->
+                <div class="content-item" id="content-times">
+                    <h1>× (Multiplication)</h1>
+                    <h2>Bridging Disciplines, Expanding Impact
+                    </h2>
+                    <div class="text-content">
+                        <p>Great design is never singular. 
+                            It thrives in the intersections—between research and storytelling, strategy and visuals, ideas and execution. 
+                            I bring together diverse skillsets to create cohesive, impactful brand experiences.
+                        </p>
+                        <div class="work-example">
+                            <p>Example: TEDXRISD </p>
+                            <button class="gallery-btn" data-gallery="gallery-times">View Gallery</button>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content for Equals -->
+                <div class="content-item" id="content-equals">
+                    <h1>= (Equals)</h1>
+                    <h2>Simplicity is the Ultimate Future</h2>
+                    <div class="text-content">
+                        <p>The clearest ideas endure. 
+                            A brand distilled to its essence is timeless, unmistakable. 
+                            I strip away the noise, refining complex systems into seamless interactions—design 
+                            that is as functional as it is beautiful.
+                        </p>
+                        <div class="work-example">
+                            <p>Example: Fictional Redesign Challenge (e.g., Government Portal, Healthcare Scheduling, or Financial Dashboard)</p>
+                            <button class="gallery-btn" data-gallery="gallery-equals">View Gallery</button>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game Container -->
+                <div class="game-container" id="content-game">
+                    <div class="game-intro">
+                        <h1>Simplification Journey</h1>
+                        <h2>From Complexity to Clarity</h2>
+                        <div class="text-content">
+                            <p>In this interactive experience, guide the '+' symbol through obstacles. As you progress, watch how the symbol transforms, eventually becoming the '=' symbol—representing the journey from complexity to simplicity.</p>
+                            <p>Click or press spacebar to jump over the obstacles. Pass 5 obstacles to complete the transformation.</p>
+                        </div>
+                        <div class="game-controls">
+                            <button class="game-btn" id="start-game">Start Game</button>
+                            <button class="game-btn" id="reset-game">Reset</button>
+                        </div>
+                    </div>
+                    <div class="game-canvas-container">
+                        <canvas id="game-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Progress Navigation -->
+        <div class="progress-nav">
+            <div class="progress-title">PROGRESS BAR</div>
+            <div class="progress-dots">
+                <div class="progress-dot active" data-state="landing-state" data-content="landing-page">W</div>
+                <div class="progress-dot" data-state="plus-state" data-content="content-plus">+</div>
+                <div class="progress-dot" data-state="times-state" data-content="content-times">×</div>
+                <div class="progress-dot" data-state="equals-state" data-content="content-equals">=</div>
+                <div class="progress-dot" data-state="game-state" data-content="content-game">G</div>
+            </div>
+        </div>
+    </div>
+
+    <!--gallery modal-->
+    <!-- Gallery for + section -->
+    <div class="gallery-modal" id="gallery-plus">
+        <div class="gallery-content iframe-content">
+            <button class="gallery-close">&times;</button>
+            <div class="iframe-container">
+                <iframe src="https://lijune.cargo.site/easywith-internshipmomentium" title="EasyWith Momentium" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery for × section -->
+    <div class="gallery-modal" id="gallery-times">
+        <div class="gallery-content iframe-content">
+            <button class="gallery-close">&times;</button>
+            <div class="iframe-container">
+                <iframe src="https://lijune.cargo.site/tedxrisd" title="TEDXRISD" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery for = section -->
+    <div class="gallery-modal" id="gallery-equals">
+        <div class="gallery-content iframe-content">
+            <button class="gallery-close">&times;</button>
+            <div class="iframe-container">
+                <iframe src="https://lijune.cargo.site/naver-clova" title="Naver Clova" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript files - correct order -->
+    <script src="navigation.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

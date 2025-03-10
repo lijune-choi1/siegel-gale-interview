@@ -1,0 +1,813 @@
+/* Reset & Base Styles */
+:root {
+    --primary-bg: #ffffff;
+    --dark-text: #000000;
+    --light-gray: #e0e0e0;
+    --transition-speed: 1.5s;
+    --animation-timing: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--dark-text);
+    overflow: hidden;
+    height: 100vh;
+    scroll-behavior: smooth;
+}
+
+/* Typography */
+h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.03em;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.small-text {
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+/* Layout Structure */
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    padding: 1.5rem 2rem;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.author-info {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.open-tab-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--dark-text);
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.open-tab-btn:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    display: flex;
+    position: relative;
+}
+
+.symbol-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.text-container {
+    width: 50%;
+    padding: 2rem 3rem 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    max-height: calc(100vh - 12rem);
+}
+
+/* Text Content */
+.content-item {
+    position: absolute;
+    width: 600px;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    pointer-events: none;
+}
+
+.content-item.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+/* Landing Page (former welcome modal) */
+.landing-page {
+    position: absolute;
+    width: 600px;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    pointer-events: none;
+    max-width: 90%;
+}
+
+.landing-page.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.landing-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.landing-text {
+    margin-bottom: 2rem;
+}
+
+.landing-btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: var(--dark-text);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.landing-btn:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+/* Work Example */
+.work-example {
+    margin-top: 1.5rem;
+    font-style: italic;
+}
+
+/* Gallery Button */
+.gallery-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    background-color: transparent;
+    border: 1px solid var(--dark-text);
+    color: var(--dark-text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-btn:hover {
+    background-color: var(--dark-text);
+    color: white;
+}
+/* Updated Gallery Styles for a columnized grid photo gallery */
+.gallery-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.gallery-modal.active {
+    display: flex;
+}
+
+.gallery-content {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    padding: 2rem;
+    position: relative;
+    overflow-y: auto;
+}
+
+.gallery-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    color: #000;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.gallery-close:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.gallery-header {
+    margin-bottom: 2rem;
+    max-width: 90%;
+    margin: 0 auto 2rem;
+}
+
+/* Updated grid layout for photo gallery */
+.gallery-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 90%;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+}
+
+.gallery-item {
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 4px 4px 0 0;
+    transition: opacity 0.3s;
+}
+
+.gallery-item:hover img {
+    opacity: 0.9;
+}
+
+.gallery-item-content {
+    padding: 1rem;
+}
+
+.gallery-item h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.gallery-item p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+
+
+/* Game Container */
+.game-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    pointer-events: none;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.game-container.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.game-intro {
+    padding: 0 2rem 2rem 0;
+    z-index: 10;
+}
+
+#game-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+
+.game-state #game-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.game-controls {
+    margin-top: 1rem;
+    position: relative;
+    z-index: 10;
+}
+
+.game-btn {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--dark-text);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+}
+
+.game-btn:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+/* Mathematical Symbol Animation */
+.symbol-wrapper {
+    width: 400px;
+    height: 400px;
+    position: relative;
+}
+
+.symbol-plus {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Plus Symbol Parts */
+.vertical-bar, .horizontal-bar, .equals-bar {
+    position: absolute;
+    background-color: black;
+    transition: all var(--transition-speed) var(--animation-timing);
+    transform-origin: center;
+}
+
+.vertical-bar {
+    width: 20%;
+    height: 100%;
+    left: 40%;
+}
+
+.horizontal-bar {
+    width: 100%;
+    height: 20%;
+    top: 40%;
+}
+
+.second-bar {
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    left: 40%;
+    background-color: black;
+    transform: rotate(-45deg) scaleY(0);
+    opacity: 0;
+    transition: all var(--transition-speed) var(--animation-timing);
+    transform-origin: center;
+}
+
+.equals-bar {
+    width: 100%;
+    height: 20%;
+    top: 65%;
+    transform: scaleX(0);
+    opacity: 0;
+    transition: all var(--transition-speed) var(--animation-timing);
+    transition-delay: 0.5s;
+}
+
+/* Landing Page - New State */
+.landing-state .vertical-bar,
+.landing-state .horizontal-bar,
+.landing-state .second-bar,
+.landing-state .equals-bar {
+    opacity: 0;
+}
+
+/* Plus State */
+.plus-state .vertical-bar {
+    transform: rotate(0deg) scaleY(1);
+    opacity: 1;
+}
+.plus-state .horizontal-bar {
+    transform: rotate(0deg);
+    opacity: 1;
+}
+.plus-state .second-bar {
+    transform: rotate(-45deg) scaleY(0);
+    opacity: 0;
+}
+.plus-state .equals-bar {
+    transform: scaleX(0);
+    opacity: 0;
+}
+
+/* Times State */
+.times-state .vertical-bar {
+    transform: rotate(45deg);
+    opacity: 1;
+}
+.times-state .horizontal-bar {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.times-state .second-bar {
+    transform: rotate(-45deg) scaleY(1);
+    opacity: 1;
+}
+.times-state .equals-bar {
+    transform: scaleX(0);
+    opacity: 0;
+}
+
+/* Equals State */
+.equals-state .vertical-bar {
+    transform: rotate(0deg) scaleY(0);
+    opacity: 0;
+}
+.equals-state .horizontal-bar {
+    transform: translateY(-20%);
+    opacity: 1;
+}
+.equals-state .second-bar {
+    transform: rotate(0deg) scaleY(0);
+    opacity: 0;
+}
+.equals-state .equals-bar {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/* Game State */
+.game-state .vertical-bar,
+.game-state .horizontal-bar,
+.game-state .second-bar,
+.game-state .equals-bar {
+    opacity: 0;
+}
+
+.game-state .main-content {
+    position: static;
+}
+
+.game-state .symbol-container {
+    display: none;
+}
+
+.game-state .text-container {
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 8px;
+    position: relative;
+}
+
+/* Progress Navigation */
+.progress-nav {
+    padding: 2rem;
+    z-index: 100;
+}
+
+.progress-title {
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.progress-dots {
+    display: flex;
+    align-items: center;
+}
+
+.progress-dot {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--light-gray);
+    margin-right: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.progress-dot:not(:last-child)::after {
+    content: "";
+    display: block;
+    width: 1.5rem;
+    height: 1px;
+    background-color: var(--light-gray);
+    position: absolute;
+    top: 50%;
+    left: 100%;
+}
+
+.progress-dot.active {
+    background-color: var(--dark-text);
+    color: white;
+}
+
+.progress-dot:not(.active) {
+    color: var(--dark-text);
+}
+
+/* Replace the game container styles in your CSS with these */
+.game-container {
+    position: relative; /* Not absolute */
+    width: 100%;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+}
+
+.game-container.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.game-intro {
+    position: relative;
+    z-index: 5;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Clear canvas positioning and dimensions */
+#game-canvas {
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Game canvas container */
+.game-canvas-container {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    margin: 1rem 0;
+    overflow: hidden;
+    border: 1px solid #000;
+    background-color: #fff;
+}
+
+/* Game state specifics */
+.game-state .main-content {
+    flex-direction: column;
+}
+
+.game-state .text-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.game-state .game-intro {
+    text-align: center;
+    background: none;
+}
+
+.game-controls {
+    text-align: center;
+    margin: 1rem 0;
+    position: relative;
+    z-index: 5;
+}
+
+/* Styles for iframe gallery */
+.iframe-content {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #000; /* Dark background for the modal */
+}
+
+.iframe-container {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Adjust close button for iframe modal */
+.iframe-content .gallery-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1002;
+}
+
+.iframe-content .gallery-close:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .text-container, .symbol-container {
+        width: 100%;
+        height: auto;
+    }
+    
+    .symbol-container {
+        padding-top: 2rem;
+    }
+    
+    .text-container {
+        padding: 2rem;
+        min-height: 50vh;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .symbol-wrapper {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .landing-page {
+        width: 90%;
+        padding: 1rem;
+    }/* Add this CSS to your style.css file */
+
+/* Game Canvas Container */
+.game-canvas-container {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* Set a specific height for the game area */
+    margin-top: 20px;
+    overflow: hidden;
+    border: 1px solid #000;
+    background-color: #fff;
+}
+
+#game-canvas {
+    display: block;
+    background-color: #fff; /* White background */
+}
+
+.game-state .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-state .text-container {
+    width: 100%;
+    max-width: 800px;
+    z-index: 10;
+    margin: 0 auto;
+    padding: 1.5rem;
+    position: relative;
+    background-color: #fff;
+}
+
+.game-state .game-intro {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.game-state .game-canvas-container {
+    width: 80%;
+    height: 60vh;
+    margin: 0 auto;
+}
+
+.game-controls {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.game-btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    margin: 0 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.game-btn:hover {
+    opacity: 0.8;
+}
+
+
+/* Make progress bar fixed at bottom in game mode */
+.game-state .progress-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #000;
+}
+/* Media query for responsive gallery */
+@media screen and (max-width: 768px) {
+    .gallery-images {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .gallery-header {
+        padding: 0 1rem;
+    }
+    
+    .gallery-item img {
+        height: 200px;
+    }
+}
+}
